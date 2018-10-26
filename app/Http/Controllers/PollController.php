@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Poll;
 use App\User;
 use App\Choice;
+use Auth;
 
 use Illuminate\Http\Request;
 
@@ -23,11 +24,30 @@ class PollController extends Controller
 
     public function store(Request $request)
     {
-        $poll = Poll::create($request->input('name', 'user_id', 'description'));
-        $choices = Choice::create($request->input('option1', 'option2', 'option3'));
-        // $poll->save();
-        // $choices->save();
-    
+        $code = uniqid();
+        $id = Auth::id();
+        
+        $poll = Poll::create([
+            'name' => $request->name, 
+            'description' => $request->description,
+            'code' => $code,
+            'user_id' => $id
+        ]);
+        
+        foreach($request->option as $value)
+            $choices = Choice::create([
+            'option' => $value,
+            'poll_id' => $poll->id
+        ]);
+
+
+
+        // dd($request->option);
+
+
+        
+       
+
         return redirect(action('PollController@index'));
     }
 

@@ -17,7 +17,8 @@ class CreateChoicesTable extends Migration
             $table->increments('id');
             $table->integer('poll_id');
             $table->string('option');
-            $table->integer('nr_of_votes');
+            // $table->integer('nr_of_votes');
+            $table->timestamps();
         });
     }
 
