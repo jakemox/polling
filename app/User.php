@@ -30,6 +30,6 @@ class User extends Authenticatable
 
     public function polls()
     {
-        return $this->belongsToMany('App\Poll', 'user_vote', 'user_id', 'vote_id');
+        return $this->belongsToMany('App\Poll', 'vote_user', 'user_id', 'vote_id');
     }
 }
