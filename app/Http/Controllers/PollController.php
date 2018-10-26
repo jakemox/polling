@@ -23,8 +23,12 @@ class PollController extends Controller
 
     public function store(Request $request)
     {
-        $poll = Poll::create($request->all());
-        return view('polls.store');
+        $poll = Poll::create($request->input('name', 'user_id', 'description'));
+        $choices = Choice::create($request->input('option1', 'option2', 'option3'));
+        // $poll->save();
+        // $choices->save();
+    
+        return redirect(action('PollController@index'));
     }
 
 

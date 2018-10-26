@@ -40,7 +40,8 @@
       <input type="text" name="option" class="form-control" placeholder="enter choice">
   </div>
 
- <button type="submit" class="btn btn-success">Submit</button>
+ <button type="submit" class="btn btn-primary">Submit</button>
+
 </form>
 
  @endsection
