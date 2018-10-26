@@ -33,25 +33,37 @@
       <input type="text" name="option[2]" class="form-control" placeholder="enter choice">
   </div>
 
-  <script type='text/javascript'>
-    function addFields(){
-        var number = document.getElementById("option").value;
-        var container = document.getElementById("choices");
-        for (i=0;i<number;i++){
-            var input = document.createElement("input");
-            input.type = "text";
-            input.name = "option[" + (i) + "]";
-            container.appendChild(input);
-            // Append a line break 
-            container.appendChild(document.createElement("br"));
-        }
-    }
-</script>
+  
 
-<button id="addBtn" class="btn btn-success" onclick="addFields()">Add</button>
+
 
  <button type="submit" class="btn btn-primary">Submit</button>
 
 </form>
+
+<button id="addBtn" class="btn btn-success" onclick="addFields()">Add</button>
+
+<script type='text/javascript'>
+    function addFields(){
+        console.log('clicked', arguments);
+    
+        var number = 1;
+        var j = 3;
+        var container = document.getElementById("choices");
+        
+        for (i=0;i<number;i++){
+            
+            var input = document.createElement("input");
+            input.type = "text";
+            input.name = "option[" + (j) + "]";
+            container.appendChild(input);
+            // Append a line break 
+            input.classList.add('form-control');
+            input.placeholder = "enter choice";
+            j++;
+            
+        }
+    }
+</script>
 
  @endsection
